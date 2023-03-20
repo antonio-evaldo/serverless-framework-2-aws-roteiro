@@ -6,9 +6,21 @@ provider:
   runtime: nodejs18.x
 
 functions:
+  simulandoUploadDoCSV:
+    handler: index.simulandoUploadDoCSV
+    events:
+      - httpApi:
+          path: /alunos/batch
+          method: post
+
   cadastrarAlunos:
     handler: index.cadastrarAlunos
     events:
       - s3:
           bucket: alunos-csv-local
           event: s3:ObjectCreated:*
+          rules:
+            - suffix: .csv
+
+plugins:
+  - serverless-offline
