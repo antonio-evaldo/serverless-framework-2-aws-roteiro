@@ -1,4 +1,4 @@
-const { fazUploadNoBucket, obtemDadosDoCsvDoBucket } = require("./servidorS3");
+const { fazUploadNoBucket, obtemDadosDoObjetoDoBucket } = require("./servidorS3");
 const { converteDadosCsv } = require("../converteDadosCsv");
 
 module.exports.simulandoUploadDoCSV = async (evento) => {
@@ -25,7 +25,7 @@ module.exports.cadastrarAlunos = async (evento) => {
   const nomeBucket = eventoS3.bucket.name;
   const chaveBucket = decodeURIComponent(eventoS3.object.key.replace(/\+/g), " ");
 
-  const dadosCsv = await obtemDadosDoCsvDoBucket(nomeBucket, chaveBucket);
+  const dadosCsv = await obtemDadosDoObjetoDoBucket(nomeBucket, chaveBucket);
 
   const alunos = await converteDadosCsv(dadosCsv);
 

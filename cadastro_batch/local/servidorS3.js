@@ -29,7 +29,7 @@ async function fazUploadNoBucket() {
   await cliente.send(comandoUpload);
 }
 
-async function obtemDadosDoCsvDoBucket(nome, chave) {
+async function obtemDadosDoObjetoDoBucket(nome, chave) {
   const cliente = criaClienteS3Local();
   const comando = new GetObjectCommand({ Bucket: nome, Key: chave });
 
@@ -41,5 +41,5 @@ async function obtemDadosDoCsvDoBucket(nome, chave) {
 
 module.exports = {
   fazUploadNoBucket,
-  obtemDadosDoCsvDoBucket
+  obtemDadosDoObjetoDoBucket
 }
