@@ -27,7 +27,7 @@ module.exports.cadastrarAlunos = async (evento) => {
 
   const dadosCsv = await obtemDadosDoCsvDoBucket(nomeBucket, chaveBucket);
 
-  const alunos = converteDadosCsv(dadosCsv);
+  const alunos = await converteDadosCsv(dadosCsv);
 
   console.log(alunos);
 };
